@@ -1,1 +1,1 @@
-# Simple-Counter-Program
+# Simple Counter Program
