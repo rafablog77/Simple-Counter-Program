@@ -30,6 +30,7 @@ window = Tk()
 
 window.geometry("236x102")
 window.configure(bg = "#F8FDFF")
+window.title("Simple Counter Program")
 
 
 canvas = Canvas(
