@@ -30,7 +30,7 @@ window = Tk()
 
 window.geometry("236x102")
 window.configure(bg = "#F8FDFF")
-window.title("Simple Counter Program")
+window.title("Simple Counter")
 
 
 canvas = Canvas(
@@ -84,5 +84,6 @@ button_2.place(
     width=53.0,
     height=53.0
 )
+
 window.resizable(False, False)
 window.mainloop()
