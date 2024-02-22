@@ -5,6 +5,10 @@
 ![Python - >=3.1](https://img.shields.io/badge/Python->=3.1-blue?logo=python&logoColor=white)  
 A simple counter program built in Python using Tkinter and [Tkinter Designer](https://github.com/ParthJadhav/Tkinter-Designer).
 # Installation
-just clone this repo or dowload a [release](https://github.com/rafablog77/Simple-Counter-Program/releases).
+To install the program run `git clone https://github.com/rafablog77/Simple-Counter-Program.git`.
 # Usage
-to run this program run the [main.py](/main.py) file.
+To run this program run the [main.py](/main.py) file.
+# Updating
+To update the program folllow the steps below (updates willl only work if you cloned this repo using git)
+1. check for updates using `git fetch`
+2. if an update is available, download it using `git pull`
