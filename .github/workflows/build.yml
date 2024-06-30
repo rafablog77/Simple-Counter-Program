@@ -12,15 +12,23 @@ jobs:
         options: -F, -w
         exe_path: ./builds
         upload_exe_with_name: linux-build
-    - uses: actions/download-artifact@v4.1.7
-      with:
-       name: linux-build
-       path: builds
-    - uses: zakiego/just-git-push@v0.1.0
-      with:
-       email: ${{ secrets.PUSH_EMAIL }}
-       username: rafablog77
-       commit-message: Linux build file uploaded by Actions
-       github-token: ${{ secrets.GITHUB_TOKEN }}
-       repository: Simple-Counter-Program
-       branch: main
+
+ build-windows:
+  runs-on: windows-latest
+  steps:
+   - uses: sayyid5416/pyinstaller@v1.6.0
+     with:
+      spec: ./main.py
+      options: -F, -w
+      exe_path: ./builds
+      upload_exe_with_name: windows-build
+
+ build-macos:
+  runs-on: macos-latest
+  steps:
+   - uses: sayyid5416/pyinstaller@v1.6.0
+     with:
+       spec: ./main.py
+       options: -F, -w
+       exe_path: ./builds
+       upload_exe_with_name: macos-build
