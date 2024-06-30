@@ -8,7 +8,7 @@ jobs:
   steps:
     - uses: Martin005/pyinstaller-action@v1.2.0
       with:
-        spec: main.py
+        spec: ./main.py
         options: -F, -w
         exe_path: ./build
         upload_exe_with_name: windows-build
