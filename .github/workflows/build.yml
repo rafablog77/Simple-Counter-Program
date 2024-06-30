@@ -4,11 +4,16 @@ on: [push,workflow_dispatch]
 
 jobs:
  build-linux:
-  runs-on: ubuntu-latest
+  runs-on: ubuntu-20.04
   steps:
-    - uses: Martin005/pyinstaller-action@v1.2.0
+    - uses: sayyid5416/pyinstaller@v1.6.0
       with:
         spec: ./main.py
         options: -F, -w
         exe_path: ./builds
-        upload_exe_with_name: windows-build
+        upload_exe_with_name: linux-build
+    - uses: actions/download-artifact@v4.1.7
+      with:
+       name: linux-build
+       path: $GITHUB_WORKSPACE/builds
+      
