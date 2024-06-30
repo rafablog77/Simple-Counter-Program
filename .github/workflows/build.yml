@@ -15,5 +15,5 @@ jobs:
     - uses: actions/download-artifact@v4.1.7
       with:
        name: linux-build
-       path: $GITHUB_WORKSPACE/builds
+       path: builds
       
