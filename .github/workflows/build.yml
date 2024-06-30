@@ -8,7 +8,7 @@ jobs:
   steps:
    - uses: actions/checkout@v4
    - name: Set up Python 3.10
-   - uses: setup-python@v5
+     uses: setup-python@v5
      with:
       python-version: 3.10
    - name: Dowload Pyinstaller
@@ -20,4 +20,4 @@ jobs:
       cd $GITHUB_WORKSPACE/BUILDS/
       pyinstaller --onefile --noconsole -n Simple-Counter-Program $GITHUB_WORKSPACE/main.py
    - name: Push changes
-   - uses: Minionguyjpro/Push-Action@1.0.0
+     uses: Minionguyjpro/Push-Action@1.0.0
