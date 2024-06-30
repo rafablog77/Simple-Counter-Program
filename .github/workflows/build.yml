@@ -20,6 +20,9 @@ jobs:
       cd $GITHUB_WORKSPACE/BUILDS/
       pyinstaller --onefile --noconsole -n Simple-Counter-Program $GITHUB_WORKSPACE/main.py
    - name: Push changes
-     uses: Minionguyjpro/Push-Action@1.0.0
-     with:
-      push-msg: Pushed Linux executable
+     run: |
+          git config --global user.name '$Env:GITHUB_ACTOR'
+          git config --global user.email '$Env:GITHUB_ACTOR@users.noreply.github.com'
+          git add -A
+          git commit -am "${{ inputs.push-msg }}"
+          git push
