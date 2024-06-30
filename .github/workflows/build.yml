@@ -10,5 +10,5 @@ jobs:
       with:
         spec: ./main.py
         options: -F, -w
-        exe_path: ./build
+        exe_path: ./builds
         upload_exe_with_name: windows-build
