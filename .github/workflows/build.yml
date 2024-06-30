@@ -16,4 +16,11 @@ jobs:
       with:
        name: linux-build
        path: builds
-      
+    - uses: zakiego/just-git-push@v0.1.0
+      with:
+       email: ${{ secrets.PUSH_EMAIL }}
+       username: linux-build-action
+       commit-message: Linux build file uploaded by Actions
+       github-token: ${{ secrets.GITHUB_TOKEN }}
+       repository: Simple-Counter-Program
+       branch: main
