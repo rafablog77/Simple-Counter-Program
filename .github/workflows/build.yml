@@ -26,6 +26,8 @@ jobs:
  build-macos:
   runs-on: macos-latest
   steps:
+   - run: brew update
+   - run: brew upgrade
    - uses: sayyid5416/pyinstaller@v1.6.0
      with:
        spec: ./main.py
