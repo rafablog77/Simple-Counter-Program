@@ -1,0 +1,44 @@
+name: build-executable
+
+on: [push,workflow_dispatch]
+
+jobs:
+ build-linux:
+  runs-on: ubuntu-20.04
+  steps:
+    - uses: sayyid5416/pyinstaller@v1.6.0
+      with:
+        spec: ./main.py
+        options: -F, -w
+        exe_path: ./builds
+        upload_exe_with_name: linux-build
+    - uses: peter-evans/create-pull-request@v6
+      with:
+        commit-message: Update Linux build
+        author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+        delete-branch: false
+        title: Update Linux build
+        body: Automated pull request by Github Actions
+        labels: build,linux
+        
+        
+ build-windows:
+  runs-on: windows-latest
+  steps:
+   - uses: GeekyEggo/delete-artifact@v5
+     with:
+       name: Generated spec file
+   - uses: sayyid5416/pyinstaller@v1.6.0
+     with:
+      spec: ./main.py
+      options: -F, -w
+      exe_path: ./builds
+      upload_exe_with_name: windows-build
+   - uses: peter-evans/create-pull-request@v6
+     with:
+      commit-message: Update Windows build
+      author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+      delete-branch: false
+      title: Update Windows build
+      body: Automated pull request by Github Actions
+      labels: build,windows
