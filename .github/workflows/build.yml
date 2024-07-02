@@ -1,6 +1,8 @@
 name: build-executable
 
 on: [push,workflow_dispatch]
+env:
+ GIT-TAG: ${{ vars.GIT_TAG }}
 
 jobs:
  build-linux:
@@ -12,6 +14,14 @@ jobs:
         options: -F, -w
         exe_path: ./builds
         upload_exe_with_name: linux-build
+    - run: git add --all
+    - run: git commit -am "Update Linux build"
+    - run: git tag -a v$GIT-TAG -m "versão 4.0"
+    - uses: ad-m/github-push-action@v0.6.0
+      with:
+       github_token: $\{{ secrets.GITHUB_TOKEN }}
+       branch: main
+       tags: true
 
  build-windows:
   runs-on: windows-latest
@@ -22,15 +32,11 @@ jobs:
       options: -F, -w
       exe_path: ./builds
       upload_exe_with_name: windows-build
-
- build-macos:
-  runs-on: macos-latest
-  steps:
-   - run: brew update
-   - run: brew upgrade
-   - uses: sayyid5416/pyinstaller@v1.6.0
+   - run: git add --all
+   - run: git commit -am "Update Linux build"
+   - run: git tag -a v$env:GIT-TAG -m "versão 4.0"
+   - uses: ad-m/github-push-action@v0.6.0
      with:
-       spec: ./main.py
-       options: -F, -w
-       exe_path: ./builds
-       upload_exe_with_name: macos-build
+      github_token: $\{{ secrets.GITHUB_TOKEN }}
+      branch: main
+      tags: true
