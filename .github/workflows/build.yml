@@ -1,5 +1,9 @@
 name: build executables
-on: [push,workflow_dispatch]
+on:
+  push:
+    paths:
+      - 'main.py'
+  workflow_dispatch:
 
 jobs:
  build-linux:
