@@ -17,7 +17,7 @@ jobs:
       with:
         commit-message: Update Linux build
         author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-        branch: linux-auto-bulild
+        branch: linux-auto-build
         delete-branch: false
         title: Update Linux build
         body: Automated pull request by Github Actions
