@@ -28,7 +28,7 @@ jobs:
    - uses: GeekyEggo/delete-artifact@v5
      with:
        name: Generated spec file
-       isGlob: false
+       useGlob: false
    - uses: sayyid5416/pyinstaller@v1.6.0
      with:
       spec: ./main.py
