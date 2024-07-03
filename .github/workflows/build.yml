@@ -1,4 +1,4 @@
-
+name: build executables
 on: [push,workflow_dispatch]
 
 jobs:
@@ -22,18 +22,10 @@ jobs:
         title: Update Linux build
         body: Automated pull request by Github Actions
         labels: build,linux
-
- clean-artifacts:
-  needs: [build-linux]
-  if: always()
-  runs-on: ubuntu-latest
-  steps:
-   - name: Delete Artifacts
-     env:
-      FOR_WEBHOOKS_SECRET: ${{ secrets.FOR_WEBHOOKS_SECRET }}
-      run: |
-        echo "::add-mask::$FOR_WEBHOOKS_SECRET"
-        curl --verbose --fail --show-error --location --request POST "https://api.github.com/repos/$GITHUB_REPOSITORY/dispatches" --header "Authorization: token $FOR_WEBHOOKS_SECRET" --header 'Content-Type: application/json' --header 'Accept: application/vnd.github.everest-preview+json' --data-raw "{ \"event_type\": \"delete_all_artifacts\", \"client_payload\": {\"parent_runid\": \"$GITHUB_RUN_ID\", \"parent_repo\": \"$GITHUB_REPOSITORY\"} }"
+    - uses: kolpav/purge-artifacts-action@v1
+      with:
+       token: ${{ secrets.GITHUB_TOKEN }}
+       expire-in: 0days
         
  build-windows:
   runs-on: windows-latest
