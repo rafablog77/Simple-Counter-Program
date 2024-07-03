@@ -12,15 +12,17 @@ jobs:
         options: -F, -w
         exe_path: ./builds
         upload_exe_with_name: linux-build
+    - run: shred -u main.spec
+    - run: rm -rf build/main
     - uses: peter-evans/create-pull-request@v6
       with:
         commit-message: Update Linux build
         author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+        branch: linux-auto-bulild
         delete-branch: false
         title: Update Linux build
         body: Automated pull request by Github Actions
         labels: build,linux
-        
         
  build-windows:
   runs-on: windows-latest
@@ -35,10 +37,13 @@ jobs:
       options: -F, -w
       exe_path: ./builds
       upload_exe_with_name: windows-build
+   - run: del "$env:GITHUB_WORKSPACE\main.spec"
+   - run: rmdir /s "$env:GITHUB_WORKSPACE\build/main"
    - uses: peter-evans/create-pull-request@v6
      with:
       commit-message: Update Windows build
       author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+      branch: windows-auto-build
       delete-branch: false
       title: Update Windows build
       body: Automated pull request by Github Actions
