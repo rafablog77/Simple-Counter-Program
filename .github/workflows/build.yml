@@ -34,10 +34,6 @@ jobs:
  build-windows:
   runs-on: windows-latest
   steps:
-   - uses: GeekyEggo/delete-artifact@v5
-     with:
-       name: Generated spec file
-       useGlob: false
    - uses: sayyid5416/pyinstaller@v1.6.0
      with:
       spec: ./main.py
