@@ -1,8 +1,16 @@
-merge_protections:
-  - name: Only merge with validation label
-    description: Make sure PR has a validation label
-    if:
-      - base = main
-    success_conditions:
-      - or:
-          - label = build
+pull_request_rules:
+  - name: Label conflicting pull requests
+    description: Add a label to a pull request with conflict to spot it easily
+    conditions:
+      - conflict
+      - '-closed'
+    actions:
+      label:
+        toggle:
+          - conflict
+  - name: Automatic merge
+    description: Merge when PR passes all branch protection and has label automerge
+    conditions:
+      - label = automerge
+    actions:
+      merge: 
