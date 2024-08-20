@@ -26,6 +26,7 @@ jobs:
         title: Update Linux build
         body: Automated pull request by Github Actions
         labels: build,linux,automerge
+        base: main
     - uses: kolpav/purge-artifacts-action@v1
       with:
        token: ${{ secrets.GITHUB_TOKEN }}
