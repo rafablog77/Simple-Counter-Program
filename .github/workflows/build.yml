@@ -25,7 +25,7 @@ jobs:
         delete-branch: false
         title: Update Linux build
         body: Automated pull request by Github Actions
-        labels: build,linux
+        labels: build,linux,automerge
         base: main
     - uses: kolpav/purge-artifacts-action@v1
       with:
@@ -55,5 +55,5 @@ jobs:
       delete-branch: false
       title: Update Windows build
       body: Automated pull request by Github Actions
-      labels: build,windows
+      labels: build,windows,automerge
       base: main
