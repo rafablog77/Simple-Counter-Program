@@ -1,4 +1,4 @@
-name: build executables
+name: build nightly executables
 on:
   push:
     paths:
@@ -20,6 +20,16 @@ jobs:
       run: shred -u main.spec
     - name: Delete other build files
       run: rm -rf build/main
+    - name: Manage nightly tag
+      run: |
+          TAG_NAME="nightly"
+          # Check if the tag already exists
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            # If it exists, delete the old tag
+            git tag -d "$TAG_NAME"
+          fi
+          # Create a new tag pointing to the latest commit
+          git tag "$TAG_NAME"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v6
       with:
@@ -55,6 +65,16 @@ jobs:
       uses: JesseTG/rm@v1.0.0
       with:
        path: build/main
+    - name: Manage nightly tag
+      run: |
+        TAG_NAME="nightly"
+        # Check if the tag already exists
+        if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+          # If it exists, delete the old tag
+          git tag -d "$TAG_NAME"
+        fi
+        # Create a new tag pointing to the latest commit
+        git tag "$TAG_NAME"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v6
       with:
