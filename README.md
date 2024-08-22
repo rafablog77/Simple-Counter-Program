@@ -3,6 +3,7 @@
 ![GitHub Tag](https://img.shields.io/github/v/tag/rafablog77/Simple-Counter-Program)
 [![issues - Simple-Counter-Program](https://img.shields.io/github/issues/rafablog77/Simple-Counter-Program)](https://github.com/rafablog77/Simple-Counter-Program/issues)
 ![Python - >=3.1](https://img.shields.io/badge/Python->=3.1-blue?logo=python&logoColor=white)  
+[![build executables](https://github.com/rafablog77/Simple-Counter-Program/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/rafablog77/Simple-Counter-Program/actions/workflows/build.yml)  
 A simple counter program built in Python using Tkinter and [Tkinter Designer](https://github.com/ParthJadhav/Tkinter-Designer).
 # Installation
 To install the program run `git clone https://github.com/rafablog77/Simple-Counter-Program.git`.
